@@ -18,7 +18,8 @@ describe("Create config entry", () => {
     const program = configsProgram(provider.connection);
 
     const transaction = new Transaction();
-    const configEntryId = findConfigEntryId(configEntryName);
+    const bufferName = Buffer.from(configEntryName, "utf8");
+    const configEntryId = findConfigEntryId(bufferName);
     const ix = await program.methods
       .initConfigEntry({
         key: configEntryName,

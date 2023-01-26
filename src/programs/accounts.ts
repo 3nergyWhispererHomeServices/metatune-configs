@@ -10,7 +10,8 @@ export const getConfigEntry = async (
   connection: Connection,
   name: string
 ): Promise<AccountData<ConfigEntryData>> => {
-  const configEntryId = findConfigEntryId(name);
+  const bufferName = Buffer.from(name, "utf8");
+  const configEntryId = findConfigEntryId(bufferName);
   return fetchIdlAccount<"configEntry", CONFIGS_PROGRAM>(
     connection,
     configEntryId,
