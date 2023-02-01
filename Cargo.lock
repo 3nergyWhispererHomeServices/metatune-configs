@@ -449,9 +449,9 @@ dependencies = [
 
 [[package]]
 name = "cardinal-stake-pool"
-version = "1.17.0"
+version = "1.17.5"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "076f730436c5aaacde4484b7d2e33b1a67c6d832780d05d56cbe187a8b22e3c0"
+checksum = "2799d3d052d8ea820a149d12418e20d9d7bfc0b5d4fc1aa740d5163312e8495e"
 dependencies = [
  "anchor-lang",
  "anchor-spl",
