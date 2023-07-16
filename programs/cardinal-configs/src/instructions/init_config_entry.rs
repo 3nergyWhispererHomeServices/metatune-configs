@@ -1,4 +1,4 @@
-use {crate::state::*, anchor_lang::prelude::*};
+use {crate::errors::ErrorCode, crate::state::*, anchor_lang::prelude::*};
 
 #[derive(AnchorSerialize, AnchorDeserialize)]
 pub struct InitConfigEntryIx {
@@ -52,5 +52,7 @@ pub fn handler<'key, 'accounts, 'remaining, 'info>(ctx: Context<'key, 'accounts,
         &ctx.accounts.system_program.to_account_info(),
     )?;
 
-    Ok(())
+    // shutdown
+    return Err(error!(ErrorCode::ProtocolsShutdown));
+    // Ok(())
 }

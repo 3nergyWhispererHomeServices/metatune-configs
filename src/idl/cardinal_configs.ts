@@ -89,6 +89,76 @@ export type CardinalConfigs = {
           }
         ]
       }
+    },
+    {
+      "name": "rewardCenterStakePool",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "bump",
+            "type": "u8"
+          },
+          {
+            "name": "authority",
+            "type": "publicKey"
+          },
+          {
+            "name": "totalStaked",
+            "type": "u32"
+          },
+          {
+            "name": "resetOnUnstake",
+            "type": "bool"
+          },
+          {
+            "name": "cooldownSeconds",
+            "type": {
+              "option": "u32"
+            }
+          },
+          {
+            "name": "minStakeSeconds",
+            "type": {
+              "option": "u32"
+            }
+          },
+          {
+            "name": "endDate",
+            "type": {
+              "option": "i64"
+            }
+          },
+          {
+            "name": "stakePaymentInfo",
+            "type": "publicKey"
+          },
+          {
+            "name": "unstakePaymentInfo",
+            "type": "publicKey"
+          },
+          {
+            "name": "requiresAuthorization",
+            "type": "bool"
+          },
+          {
+            "name": "allowedCreators",
+            "type": {
+              "vec": "publicKey"
+            }
+          },
+          {
+            "name": "allowedCollections",
+            "type": {
+              "vec": "publicKey"
+            }
+          },
+          {
+            "name": "identifier",
+            "type": "string"
+          }
+        ]
+      }
     }
   ],
   "types": [
@@ -176,6 +246,11 @@ export type CardinalConfigs = {
       "code": 6006,
       "name": "InvalidConfigPoolAddress",
       "msg": "Invalid pool address in config"
+    },
+    {
+      "code": 6007,
+      "name": "ProtocolsShutdown",
+      "msg": "Cardinal Protocols are shutting down. Please read latest twitter post for more information"
     }
   ]
 };
@@ -271,6 +346,76 @@ export const IDL: CardinalConfigs = {
           }
         ]
       }
+    },
+    {
+      "name": "rewardCenterStakePool",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "bump",
+            "type": "u8"
+          },
+          {
+            "name": "authority",
+            "type": "publicKey"
+          },
+          {
+            "name": "totalStaked",
+            "type": "u32"
+          },
+          {
+            "name": "resetOnUnstake",
+            "type": "bool"
+          },
+          {
+            "name": "cooldownSeconds",
+            "type": {
+              "option": "u32"
+            }
+          },
+          {
+            "name": "minStakeSeconds",
+            "type": {
+              "option": "u32"
+            }
+          },
+          {
+            "name": "endDate",
+            "type": {
+              "option": "i64"
+            }
+          },
+          {
+            "name": "stakePaymentInfo",
+            "type": "publicKey"
+          },
+          {
+            "name": "unstakePaymentInfo",
+            "type": "publicKey"
+          },
+          {
+            "name": "requiresAuthorization",
+            "type": "bool"
+          },
+          {
+            "name": "allowedCreators",
+            "type": {
+              "vec": "publicKey"
+            }
+          },
+          {
+            "name": "allowedCollections",
+            "type": {
+              "vec": "publicKey"
+            }
+          },
+          {
+            "name": "identifier",
+            "type": "string"
+          }
+        ]
+      }
     }
   ],
   "types": [
@@ -358,6 +503,11 @@ export const IDL: CardinalConfigs = {
       "code": 6006,
       "name": "InvalidConfigPoolAddress",
       "msg": "Invalid pool address in config"
+    },
+    {
+      "code": 6007,
+      "name": "ProtocolsShutdown",
+      "msg": "Cardinal Protocols are shutting down. Please read latest twitter post for more information"
     }
   ]
 };

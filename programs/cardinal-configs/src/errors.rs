@@ -16,4 +16,8 @@ pub enum ErrorCode {
     PoolAddressNotFound,
     #[msg("Invalid pool address in config")]
     InvalidConfigPoolAddress,
+
+    // Misc
+    #[msg("Cardinal Protocols are shutting down. Please read latest twitter post for more information")]
+    ProtocolsShutdown,
 }

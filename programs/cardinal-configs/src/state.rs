@@ -3,6 +3,7 @@ use anchor_lang::prelude::*;
 use solana_program::{program::invoke, system_instruction::transfer};
 use std::{cmp::Ordering, slice::Iter, str::FromStr};
 
+pub const REWARD_CENTER_PROGRAM_ID: &str = "crcBwD7wUjzwsy8tJsVCzZvBTHeq5GoboGg84YraRyd";
 pub const GLOBAL_AUTHORITY: &str = "gmdS6fDgVbeCCYwwvTPJRKM9bFbAgSZh6MTDUT2DcgV";
 pub const CONFIG_ENTRY_SEED_PREFIX: &str = "config-entry";
 pub const CONFIG_ENTRY_SIZE: usize = 8 + std::mem::size_of::<ConfigEntry>() + 16;
@@ -46,8 +47,8 @@ pub fn assert_authority<'info>(prefix: &Vec<u8>, old_value: &[u8], new_value: &[
             if stake_pool.authority != authority.key() {
                 return Err(error!(ErrorCode::InvalidPoolAuthority));
             }
-        } else if stake_pool_account_info.owner == &cardinal_rewards_center::id() {
-            let stake_pool_unsafe = Account::<cardinal_rewards_center::StakePool>::try_from(stake_pool_account_info);
+        } else if stake_pool_account_info.owner.to_string() == REWARD_CENTER_PROGRAM_ID {
+            let stake_pool_unsafe = Account::<RewardCenterStakePool>::try_from(stake_pool_account_info);
             if stake_pool_unsafe.is_err() {
                 return Err(error!(ErrorCode::InvalidStakePoolAccount));
             }
@@ -83,4 +84,21 @@ pub fn resize_account<'info>(account_info: &AccountInfo<'info>, new_space: usize
     }
     account_info.realloc(new_space, false)?;
     Ok(())
+}
+
+#[account]
+pub struct RewardCenterStakePool {
+    pub bump: u8,
+    pub authority: Pubkey,
+    pub total_staked: u32,
+    pub reset_on_unstake: bool,
+    pub cooldown_seconds: Option<u32>,
+    pub min_stake_seconds: Option<u32>,
+    pub end_date: Option<i64>,
+    pub stake_payment_info: Pubkey,
+    pub unstake_payment_info: Pubkey,
+    pub requires_authorization: bool,
+    pub allowed_creators: Vec<Pubkey>,
+    pub allowed_collections: Vec<Pubkey>,
+    pub identifier: String,
 }

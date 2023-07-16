@@ -391,7 +391,6 @@ name = "cardinal-configs"
 version = "1.0.0"
 dependencies = [
  "anchor-lang",
- "cardinal-rewards-center",
  "cardinal-stake-pool",
  "serde_json",
  "solana-program",
@@ -430,20 +429,6 @@ dependencies = [
  "mpl-token-metadata",
  "solana-program",
  "spl-associated-token-account",
- "spl-token",
-]
-
-[[package]]
-name = "cardinal-rewards-center"
-version = "2.3.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "82bbbaed89b71d4e5ede6f3903d23cc7722ccf555934fa3a46f2c670d5950476"
-dependencies = [
- "anchor-lang",
- "anchor-spl",
- "cardinal-creator-standard",
- "mpl-token-metadata",
- "solana-program",
  "spl-token",
 ]
 
